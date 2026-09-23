@@ -229,13 +229,69 @@
       <div class="fc-highlight">MOVIMENTO + AMBIENTE ESCURO = LED LIGADO</div>
     </div>
 
-    <!-- Vídeo -->
+    <!-- Vídeo com Abas Interativas -->
     <div class="media reveal">
-      <p class="media__label">REGISTRO DO EXPERIMENTO</p>
-      <div class="vid">
-        <video controls playsinline preload="metadata">
-          <source src="videos/1.mp4" type="video/mp4">
-        </video>
+      <div class="media__header">
+        <p class="media__label">REGISTRO DO EXPERIMENTO</p>
+        <div class="media__tabs" role="tablist" aria-label="Opções de visualização do Desafio 01">
+          <button class="tab-btn is-active" role="tab" aria-selected="true" data-tab-target="d1-sim">
+            <span class="tab-btn__icon">💻</span>
+            <span>Simulação Virtual</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab-target="d1-lab">
+            <span class="tab-btn__icon">🔬</span>
+            <span>Prática na Bancada</span>
+            <span class="tab-btn__badge">Real</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Painel 1: Simulação Tinkercad -->
+      <div class="media__pane is-active" id="d1-sim" role="tabpanel">
+        <div class="vid">
+          <video controls playsinline preload="metadata">
+            <source src="gravacoes/desafio1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="media__caption">Simulação completa do circuito no Autodesk Tinkercad com sensor PIR, sensor de luz e acionamento lógico.</p>
+      </div>
+
+      <!-- Painel 2: Prática na Bancada (Layout Otimizado para Vídeo Vertical) -->
+      <div class="media__pane" id="d1-lab" role="tabpanel">
+        <div class="lab-showcase">
+          <div class="lab-showcase__player">
+            <div class="vid vid--portrait">
+              <video controls playsinline preload="metadata">
+                <source src="videos/pratica-desafio1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="lab-showcase__info">
+            <div class="lab-badge">
+              <span class="lab-badge__dot"></span>
+              <span>TESTE FÍSICO EM LABORATÓRIO</span>
+            </div>
+            <h3 class="lab-title">Validação com Hardware Real</h3>
+            <p class="lab-desc">
+              Execução prática do circuito montado na protoboard conectado à placa Arduino Uno física. Ao cobrir o sensor LDR para simular ambiente escuro e gerar movimentação em frente ao sensor PIR, o sistema valida a condição lógica e aciona imediatamente o LED vermelho.
+            </p>
+
+            <div class="lab-specs">
+              <div class="lab-spec">
+                <span class="lab-spec__key">HARDWARE</span>
+                <span class="lab-spec__val">Arduino Uno R3</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">SENSORES</span>
+                <span class="lab-spec__val">PIR (Movimento) + LDR (Luz)</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">STATUS</span>
+                <span class="lab-spec__val lab-spec__val--ok">✓ Condição Lógica Validada</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -299,12 +355,69 @@
       <div class="vf-node vf-node--accent">CONTROLAR LED</div>
     </div>
 
-    <!-- Vídeo -->
+    <!-- Vídeo com Abas Interativas -->
     <div class="media reveal">
-      <div class="vid">
-        <video controls playsinline preload="metadata">
-          <source src="videos/2.mp4" type="video/mp4">
-        </video>
+      <div class="media__header">
+        <p class="media__label">REGISTRO DO EXPERIMENTO</p>
+        <div class="media__tabs" role="tablist" aria-label="Opções de visualização do Desafio 02">
+          <button class="tab-btn is-active" role="tab" aria-selected="true" data-tab-target="d2-sim">
+            <span class="tab-btn__icon">💻</span>
+            <span>Simulação Virtual</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab-target="d2-lab">
+            <span class="tab-btn__icon">🔬</span>
+            <span>Prática na Bancada</span>
+            <span class="tab-btn__badge">Real</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Painel 1: Simulação Tinkercad -->
+      <div class="media__pane is-active" id="d2-sim" role="tabpanel">
+        <div class="vid">
+          <video controls playsinline preload="metadata">
+            <source src="gravacoes/desafio2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="media__caption">Simulação do sensor de distância ultrassônico com potenciômetro definindo o limiar no Autodesk Tinkercad.</p>
+      </div>
+
+      <!-- Painel 2: Prática na Bancada (Layout Otimizado para Vídeo Vertical) -->
+      <div class="media__pane" id="d2-lab" role="tabpanel">
+        <div class="lab-showcase">
+          <div class="lab-showcase__player">
+            <div class="vid vid--portrait">
+              <video controls playsinline preload="metadata">
+                <source src="videos/pratica-desafio2.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="lab-showcase__info">
+            <div class="lab-badge">
+              <span class="lab-badge__dot"></span>
+              <span>TESTE FÍSICO EM LABORATÓRIO</span>
+            </div>
+            <h3 class="lab-title">Medição e Monitor Serial ao Vivo</h3>
+            <p class="lab-desc">
+              Teste real com o sensor ultrassônico HC-SR04 e potenciômetro montados na protoboard. No vídeo é possível observar o Serial Monitor do Arduino IDE calculando a distância medida em centímetros em tempo real e comparando dinamicamente com o limiar configurado.
+            </p>
+
+            <div class="lab-specs">
+              <div class="lab-spec">
+                <span class="lab-spec__key">HARDWARE</span>
+                <span class="lab-spec__val">Arduino Uno R3</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">SENSORES</span>
+                <span class="lab-spec__val">HC-SR04 + Potenciômetro A0</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">TELEMETRIA</span>
+                <span class="lab-spec__val lab-spec__val--ok">✓ Serial Monitor Ativo</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -378,11 +491,19 @@
 
     <!-- Vídeo -->
     <div class="media reveal">
+      <div class="media__header">
+        <p class="media__label">REGISTRO DO EXPERIMENTO</p>
+        <div class="media__badge-tag">
+          <span class="media__badge-icon">💻</span>
+          <span>Simulação Virtual (Tinkercad)</span>
+        </div>
+      </div>
       <div class="vid">
         <video controls playsinline preload="metadata">
-          <source src="videos/3.mp4" type="video/mp4">
+          <source src="gravacoes/desafio3.mp4" type="video/mp4">
         </video>
       </div>
+      <p class="media__caption">Monitoramento ambiental com sensores de temperatura e umidade com indicação por LEDs no Autodesk Tinkercad.</p>
     </div>
 
     <!-- Código -->
@@ -454,6 +575,55 @@
         <h3>AUTOMAÇÃO</h3>
         <p>Execução de tarefas sem intervenção humana.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PRÁTICA EM LABORATÓRIO ═══════════════════════════════════════ -->
+<section class="sect sect--alt" id="pratica">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">04 / PRÁTICA EM LABORATÓRIO</p>
+      <h2 class="sect__title">DO CIRCUITO VIRTUAL<br>À BANCADA REAL.</h2>
+      <p class="sect__text">Registros das montagens físicas dos circuitos na protoboard e da validação do código com o Arduino Uno. Os experimentos foram testados e confirmados em ambiente real de laboratório.</p>
+    </div>
+
+    <div class="pratica-grid reveal">
+
+      <!-- Vídeo 1 -->
+      <div class="pratica-card">
+        <div class="pratica-card__header">
+          <span class="pratica-card__num">01</span>
+          <div>
+            <h3 class="pratica-card__title">Iluminação Inteligente</h3>
+            <p class="pratica-card__sub">PIR + LDR + LED em hardware real</p>
+          </div>
+        </div>
+        <div class="pratica-card__vid">
+          <video controls playsinline preload="metadata">
+            <source src="videos/pratica-desafio1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="pratica-card__desc">Sensor PIR detecta movimentação e sensor LDR lê a luminosidade ambiente. O LED acende quando há movimento e pouca luz — condição lógica validada na bancada.</p>
+      </div>
+
+      <!-- Vídeo 2 -->
+      <div class="pratica-card">
+        <div class="pratica-card__header">
+          <span class="pratica-card__num">02</span>
+          <div>
+            <h3 class="pratica-card__title">Medição de Distância</h3>
+            <p class="pratica-card__sub">HC-SR04 + Potenciômetro em hardware real</p>
+          </div>
+        </div>
+        <div class="pratica-card__vid">
+          <video controls playsinline preload="metadata">
+            <source src="videos/pratica-desafio2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="pratica-card__desc">Sensor ultrassônico mede a distância em centímetros em tempo real. O potenciômetro define o limite de comparação — visualizado no Serial Monitor do Arduino IDE.</p>
+      </div>
+
     </div>
   </div>
 </section>

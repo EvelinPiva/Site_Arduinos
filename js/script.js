@@ -120,4 +120,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ════════════════════════════════════════════════════════════
+     ABAS DE VÍDEO (SIMULAÇÃO vs PRÁTICA EM BANCADA)
+     ════════════════════════════════════════════════════════════ */
+  document.querySelectorAll('.media__tabs').forEach(tabGroup => {
+    const buttons = tabGroup.querySelectorAll('.tab-btn');
+    const mediaContainer = tabGroup.closest('.media');
+    if (!mediaContainer) return;
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.tabTarget;
+        if (!targetId) return;
+
+        // Atualiza estado visual e acessibilidade dos botões
+        buttons.forEach(b => {
+          const isActive = b === btn;
+          b.classList.toggle('is-active', isActive);
+          b.setAttribute('aria-selected', String(isActive));
+        });
+
+        // Alterna os painéis de mídia
+        const panes = mediaContainer.querySelectorAll('.media__pane');
+        panes.forEach(pane => {
+          const isTarget = pane.id === targetId;
+          pane.classList.toggle('is-active', isTarget);
+
+          // Pausa vídeos no painel inativo para evitar áudios sobrepostos
+          if (!isTarget) {
+            pane.querySelectorAll('video').forEach(v => {
+              try { v.pause(); } catch (_) {}
+            });
+          }
+        });
+      });
+    });
+  });
+
 });

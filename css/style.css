@@ -392,10 +392,70 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 
 /* ═══════════════════════════════════════ VÍDEO ═══════════════ */
 .media{margin-top:64px}
+.media__header{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;margin-bottom:20px;
+}
+.media__header .media__label{margin-bottom:0}
 .media__label{
   font-family:var(--mono);font-size:11px;font-weight:500;
   letter-spacing:.12em;color:var(--muted);margin-bottom:20px;
 }
+
+/* Abas de Navegação de Mídia */
+.media__tabs{
+  display:inline-flex;align-items:center;
+  background:var(--white);border:1px solid var(--line);
+  border-radius:8px;padding:4px;gap:4px;
+}
+.tab-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:6px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.04em;color:var(--muted);
+  background:transparent;cursor:pointer;
+  transition:all var(--t) var(--ease);
+}
+.tab-btn:hover{color:var(--title);background:rgba(124,58,237,.04)}
+.tab-btn.is-active{
+  color:var(--purple);background:var(--lilac-dim);
+  border:1px solid var(--lilac);font-weight:600;
+  box-shadow:0 1px 4px rgba(124,58,237,.08);
+}
+.tab-btn__icon{font-size:13px;line-height:1}
+.tab-btn__badge{
+  font-size:9px;font-weight:700;text-transform:uppercase;
+  padding:2px 6px;border-radius:3px;
+  background:var(--purple);color:#fff;letter-spacing:.05em;
+}
+
+/* Selo de Simulação para Desafio 03 */
+.media__badge-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:6px;
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  color:var(--purple);background:var(--lilac-dim);
+  border:1px solid var(--lilac);letter-spacing:.03em;
+}
+.media__badge-icon{font-size:12px;line-height:1}
+
+/* Painéis de Mídia */
+.media__pane{display:none}
+.media__pane.is-active{
+  display:block;
+  animation:mediaFadeIn 350ms var(--ease) forwards;
+}
+@keyframes mediaFadeIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.media__caption{
+  font-family:var(--mono);font-size:11.5px;
+  color:var(--muted);margin-top:14px;
+  letter-spacing:.02em;line-height:1.5;
+}
+
+/* Player Padrão (16:9 Landscape) */
 .vid{
   width:100%;aspect-ratio:16/9;
   border-radius:12px;overflow:hidden;
@@ -404,6 +464,94 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
   background:#000;
 }
 .vid video{width:100%;height:100%;object-fit:cover}
+
+/* Layout Especial para Bancada e Vídeo Vertical (9:16) */
+.lab-showcase{
+  display:grid;grid-template-columns:320px 1fr;
+  gap:40px;align-items:center;
+  background:var(--white);border:1px solid var(--line);
+  border-radius:14px;padding:36px;
+  box-shadow:0 16px 40px rgba(0,0,0,.03);
+}
+.lab-showcase__player{
+  display:flex;justify-content:center;
+}
+.vid--portrait{
+  width:100%;max-width:320px;
+  aspect-ratio:9/16;
+  border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);
+  background:#0d0c10;
+  box-shadow:0 20px 48px rgba(0,0,0,.12);
+}
+.vid--portrait video{
+  width:100%;height:100%;object-fit:cover;
+}
+.lab-showcase__info{
+  display:flex;flex-direction:column;gap:16px;
+}
+.lab-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.08em;color:var(--purple);
+  background:var(--lilac-dim);border:1px solid var(--lilac);
+  padding:5px 12px;border-radius:4px;width:fit-content;
+}
+.lab-badge__dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--purple);box-shadow:0 0 8px var(--purple);
+  animation:pulseDot 2s infinite ease-in-out;
+}
+@keyframes pulseDot{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.4;transform:scale(.85)}
+}
+.lab-title{
+  font-size:22px;font-weight:700;letter-spacing:-.02em;
+  color:var(--title);line-height:1.2;
+}
+.lab-desc{
+  font-size:15px;line-height:1.7;color:var(--body);margin:0;
+}
+.lab-specs{
+  display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:12px;margin-top:8px;padding-top:18px;
+  border-top:1px solid var(--line);
+}
+.lab-spec{
+  display:flex;flex-direction:column;gap:4px;
+  padding:12px 16px;background:var(--bg-alt);
+  border:1px solid var(--line);border-radius:6px;
+}
+.lab-spec__key{
+  font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.1em;color:var(--muted);font-weight:600;
+}
+.lab-spec__val{
+  font-size:12.5px;color:var(--title);font-weight:500;
+}
+.lab-spec__val--ok{
+  color:var(--purple);font-family:var(--mono);font-weight:600;
+}
+
+@media(max-width:860px){
+  .lab-showcase{
+    grid-template-columns:1fr;
+    gap:28px;padding:24px;
+  }
+  .vid--portrait{
+    max-width:280px;
+  }
+  .media__header{
+    flex-direction:column;align-items:flex-start;
+  }
+  .media__tabs{
+    width:100%;justify-content:stretch;
+  }
+  .tab-btn{
+    flex:1;justify-content:center;
+  }
+}
 
 /* ═══════════════════════════════════════ EDITOR DE CÓDIGO ═══════════════ */
 .code-sect{margin-top:64px}
@@ -477,6 +625,54 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 }
 .cpt h3{font-size:28px;font-weight:700;margin-bottom:16px}
 .cpt p{font-size:15px;color:var(--muted);margin:0}
+
+/* ═══════════════════════════════════════ PRÁTICA EM LABORATÓRIO ═══════════════ */
+.pratica-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:32px;margin-top:64px;
+}
+.pratica-card{
+  background:var(--white);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;
+  transition:border-color var(--t) var(--ease),box-shadow var(--t) var(--ease);
+}
+.pratica-card:hover{
+  border-color:var(--lilac);
+  box-shadow:0 16px 40px rgba(124,58,237,.07);
+}
+.pratica-card__header{
+  display:flex;align-items:center;gap:20px;
+  padding:28px 28px 0;
+}
+.pratica-card__num{
+  font-size:48px;font-weight:200;line-height:1;
+  color:var(--purple);letter-spacing:-.04em;flex-shrink:0;
+}
+.pratica-card__title{
+  font-size:17px;font-weight:700;letter-spacing:-.02em;
+  color:var(--title);margin-bottom:4px;
+}
+.pratica-card__sub{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  color:var(--muted);letter-spacing:.06em;margin:0;
+}
+.pratica-card__vid{
+  width:100%;aspect-ratio:9/16;
+  margin-top:20px;background:#0d0c10;
+  overflow:hidden;
+}
+.pratica-card__vid video{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.pratica-card__desc{
+  padding:20px 28px 28px;
+  font-size:14px;color:var(--muted);
+  line-height:1.7;margin:0;
+}
+
+@media(max-width:768px){
+  .pratica-grid{grid-template-columns:1fr}
+}
 
 /* ═══════════════════════════════════════ CONCLUSÃO ═══════════════ */
 .conclusion{padding:180px 0}
